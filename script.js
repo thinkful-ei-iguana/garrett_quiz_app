@@ -45,8 +45,9 @@ function newGame() {
 
 function displayQuestion() {
   $('.question-container').show();
+  // generate radio buttons
   let answers = '';
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < STORE.length; i++) {
     answers += `
       <div class="button">
         <input type="radio" class="answerInput" name="user-answer" id="user-answer" value="${i}" aria-label="radioButton" required>${STORE[currentQuestion].choices[i]}
@@ -67,10 +68,46 @@ function displayQuestion() {
   `);
 }
 
+function submitAnswer() {
+  $('.js-form').on('submit', function() {
+    event.preventDefault();
+    const userPickNum = $(`input[name=user-answer]:checked`).val();
+    const answerNum = STORE[currentQuestion].answer;
+    const answer = STORE[currentQuestion].choices[answerNum];
+    $('.results').show();
+    if (userPickNum === STORE[currentQuestion].answer) {
+      $('.results').html(`
+        <h2>Congratulations</h2>
+        <p>Omg! You are a How I Met Your Mother Legend!!</p>
+        <p>The correct answer is ${answer}.</p>
+        <button class="nextButton">Next</button>
+      `);
+      totalCorrect++;
+    } else {
+      $('.results').html(`
+        <h2>Incorrect</h2>
+        <p>The correct answer is ${answer}.</p>
+        <button class="nextButton">Next</button>
+      `);
+    }
+    $('.question-container').hide();
+    $('.checkAnswerButton').hide();
+    questionCounter();
+  });
+}
+
+function questionCounter() {
+  currentQuestion++;
+}
+
+function nextQuestion() {}
+
 function showCurrentStats() {}
 
 function quizInit() {
   newGame();
+  submitAnswer();
+  nextQuestion();
 }
 
 $(quizInit);

@@ -100,14 +100,58 @@ function questionCounter() {
   currentQuestion++;
 }
 
-function nextQuestion() {}
+function nextQuestion() {
+  $('.results').on('click', '.nextButton', function() {
+    if (currentQuestion === 5) {
+      $('.results').hide();
+      $('.container').hide();
+      $('.stats').show();
+      showStatsSection();
+    } else {
+      $('.container').show();
+      $('.results').hide();
+      displayQuestion();
+      showCurrentStats();
+    }
+  });
+}
 
-function showCurrentStats() {}
+function showCurrentStats() {
+  let totalIncorrect = (currentQuestion) - totalCorrect;
+  $('.currentStats').html(`
+    <h2>Question ${currentQuestion + 1} of 5 <br> ${totalCorrect} correct / ${totalIncorrect} Incorrect</h2>
+  `);
+}
+
+function showStatsSection() {
+  $('.currentStats').hide();
+  $('.stats').html(`
+    <h2>Here's how you did</h2>
+    <h2>${totalCorrect} correct out of 5 questions</h2>
+    <h3>Points Earned ${totalCorrect}</h3>
+    <button class="restart-button">Restart the Quiz</button>    
+  `);
+}
+
+function resetStats() {
+  currentQuestion = 0;
+  totalCorrect = 0;
+  $('.stats').hide();
+  $('.intro').show();
+}
+
+function restartQuiz() {
+  $('.stats').on('click', '.restart-button', function() {
+    resetStats();
+  });
+}
+
 
 function quizInit() {
   newGame();
   submitAnswer();
   nextQuestion();
+  restartQuiz();
 }
 
 $(quizInit);

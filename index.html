@@ -11,6 +11,30 @@
 </head>
 
 <body>
+  <main>
+    <header>
+      <h1 class="quiz-title">How I Met Your Mother Quiz</h1>
+    </header>
+    <section>
+      <div class="intro">
+        <p>How well do you know How I Met Your Mother?</p>
+        <button class="startButton" aria-label="Start Quiz">Start the quiz</button>
+      </div>
+    </section>
+    <section>
+      <div class="container hidden">
+        <div class="currentStats"></div>
+        <div class="results"></div>
+        <form class="js-form">
+          <fieldset class="quizAnswers">
+            <legend></legend>
+            <div class="question-container"></div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="stats hidden"></div>
+    </section>
+  </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="script.js"></script>

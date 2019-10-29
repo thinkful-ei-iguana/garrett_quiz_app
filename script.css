@@ -46,7 +46,7 @@ h3 {
   font-size: 20px;
 }
 
-div.questionDiv {
+legend.questionDiv {
   height: 60px;
   text-align: center;
   margin-bottom: 10px;
@@ -65,7 +65,7 @@ div.questionDiv {
 
 .button {
   background-color: #8B8BAE;
-  border: 1px solid rbga(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 10px;
   width: 100%;
   display: inline-block;
@@ -74,4 +74,50 @@ div.questionDiv {
   padding: 8px;
   margin-top: 1px;
   text-align: left;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  background-color: #fff;
+  height: 60px;
+  width: 100%;
+  font-size: 20px;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  color: #526760;
+}
+
+.quizAnswers {
+  border: none;
+  cursor: pointer;
+}
+
+/* MEDIA QUERIES */
+@media (min-width:1024px) {
+  .answersDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button {
+    height: 60px;
+    width: 100%;
+    font-size: 20px;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    color: #526760;
+  }
+
+  .button {
+    width: 100%;
+    color: black;
+    margin-bottom: 4px;
+    padding: 30px;
+    margin-top: 1px;
+  }
 }

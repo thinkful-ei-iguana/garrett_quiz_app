@@ -50,15 +50,17 @@ function displayQuestion() {
   for (let i = 0; i < STORE.length; i++) {
     answers += `
       <div class="button">
-        <input type="radio" class="answerInput" name="user-answer" id="user-answer" value="${i}" aria-label="radioButton" required>${STORE[currentQuestion].choices[i]}
+        <label class="answerLabel" for="user-answer" name="user-answer">
+          <input type="radio" class="answerInput" name="user-answer" id="user-answer" value="${i}" aria-label="radioButton" required>${STORE[currentQuestion].choices[i]}
+        </label>
       </div>
     `;
   }
 
   $('.question-container').html(`
-    <div class="questionDiv">
+    <legend class="questionDiv">
       <h3>${STORE[currentQuestion].question}</h3>
-    </div>
+    </legend>
     <div class="answersDiv">
       ${answers}
     </div>
